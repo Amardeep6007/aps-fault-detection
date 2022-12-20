@@ -13,3 +13,5 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+This changes are made by Amardeep Kumar in neuro lab
