@@ -19,12 +19,26 @@
 #          print(e)
 
 
+#from sensor.utils import get_collection_as_dataframe
+#import sys, os
+
+
+#if __name__=='__main__':
+#     try:
+#          get_collection_as_dataframe(database_name = "aps_database", collection_name="collection_name")
+#     except Exception as e:
+#          print(e)
+
+from sensor.logger import logging
+from sensor.exception import SensorException
 from sensor.utils import get_collection_as_dataframe
 import sys, os
-
-
+from sensor.entity.config_entity import DataIngestionConfig
+from sensor.entity import config_entity
 if __name__=='__main__':
      try:
-          get_collection_as_dataframe(database_name = "aps_database", collection_name="collection_name")
+          Training_PipelineConfig = config_entity.Training_PipelineConfig()
+          data_ingestion_config = DataIngestionConfig(Training_PipelineConfig)
+          print(data_ingestion_config.to_dict())
      except Exception as e:
           print(e)
