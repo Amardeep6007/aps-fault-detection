@@ -35,10 +35,14 @@ from sensor.utils import get_collection_as_dataframe
 import sys, os
 from sensor.entity.config_entity import DataIngestionConfig
 from sensor.entity import config_entity
+from sensor.components import data_ingestion
+
 if __name__=='__main__':
      try:
           Training_PipelineConfig = config_entity.Training_PipelineConfig()
           data_ingestion_config = DataIngestionConfig(Training_PipelineConfig)
           print(data_ingestion_config.to_dict())
+          data_ingestion = DataIngestion(data_ingestion_config =data_ingestion_config)
+          print(data_ingestion.initiate_data_ingestion())
      except Exception as e:
           print(e)
