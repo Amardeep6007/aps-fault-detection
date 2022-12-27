@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 
 
 class data_ingestion:
-    def __init__(self, data_ingestion_config:data_ingestion_config):
+    def __init__(self, data_ingestion_config:config_entity.DataIngestionConfig):
         try:
             logging.info(f"{'>>'*20} Data Ingestion {'<<'*20}")
             self.data_ingestion_config= data_ingestion_config
