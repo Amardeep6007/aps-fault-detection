@@ -16,11 +16,11 @@ class Training_PipelineConfig:
             raise SensorException(e, sys)
 
 class DataIngestionConfig:
-    def __init__(self, Training_PipelineConfig:Training_PipelineConfig):
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         try:
             self.database_name = 'aps_database'
             self.collection_name = 'collection_name'
-            self.data_ingestion_dir = os.path.join(Training_PipelineConfig.artifact_dir, 'data_ingestion')
+            self.data_ingestion_dir = os.path.join(training_PipelineConfig.artifact_dir, 'data_ingestion')
             self.feature_store_file_path = os.path.join(self.data_ingestion_dir, 'feature_Store', FILE_NAME)
             self.train_file_path = os.path.join(self.data_ingestion_dir, 'dataset', TRAIN_FILE_NAME)
             self.test_file_path = os.path.join(self.data_ingestion_dir, 'dataset', TEST_FILE_NAME)

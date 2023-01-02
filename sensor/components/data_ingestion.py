@@ -9,7 +9,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 
-class data_ingestion:
+class DataIngestion:
     def __init__(self, data_ingestion_config:config_entity.DataIngestionConfig):
         try:
             logging.info(f"{'>>'*20} Data Ingestion {'<<'*20}")
@@ -19,14 +19,14 @@ class data_ingestion:
             
     def initiate_data_ingestion(self)->artifact_entity.DataIngestionArtifact:
         try:
-            loggin.info(f"Exporting collection data as pandas Dataframe")
+            logging.info(f"Exporting collection data as pandas Dataframe")
             #Exporting collection data as pandas data frame
             df:pd.Dataframe = utils.get_collection_as_dataframe(database_name=self.data_ingestion_config.database_name , collection_name=self.data_ingestion_config.collection_name)
             
             logging.info("save data in the feature store")
 
             #replace na with NaN
-            df.replace(to_replace='na', Value = np.NAN, inplace=True)
+            df.replace(to_replace='na', value = np.NAN, inplace=True)
 
             #save data in the feature store
             logging.info("Create feature store folder if folder not available ")
