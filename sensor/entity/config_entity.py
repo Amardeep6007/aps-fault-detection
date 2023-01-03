@@ -33,7 +33,15 @@ class DataIngestionConfig:
             return self.__dict__
         except Exception as e:
             raise SensorException(e, sys)
-class DataValidationConfig:...
+
+class DataValidationConfig:
+
+    def __init__(self, training_PipelineConfig=Training_PipelineConfig()):
+        self.data_validation_dir = os.path.join(training_PipelineConfig.artifact_dir, "data_validation")
+        self.report_file_path = os.path.join(self.data_validation_dir, "report.yaml")
+        
+
+
 class DataTransformationConfig:...
 class ModelTrainerConfig:...
 class ModelEvaluationConfig:...
