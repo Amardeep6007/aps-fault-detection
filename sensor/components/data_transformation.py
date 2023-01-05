@@ -54,8 +54,21 @@ class DataTransformation:
             label_encoder = LabelEncoder()
             label_encoder.fit(target_feature_train_df)
 
-            label_encoder.transform(target_feature_train_df)
-            label_encoder.transform(target_feature_test_df)
+            #transformation on target column
+            target_feature_train_array = label_encoder.transform(target_feature_train_df)
+            target_feature_test_array = label_encoder.transform(target_feature_test_df)
+
+            transformation_pipeline = DataTransformation.get_data_transformer_object()
+            transformation_pipeline.fit(input_feature_train_df)
+
+            #transformation input feature
+            input_feature_train_array = transformation_pipeline.transform(input_feature_train_df)
+            input_feature_test_array =  transformation_pipeline.transform(input_feature_test_df)
+
+            
+            
+
+
         except Exception as e:
             raise SensorException(e, sys)
 
