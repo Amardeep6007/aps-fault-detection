@@ -2,7 +2,7 @@ from sensor import utils
 from sensor.entity import artifact_entity, config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
-from sklearn.preprocessing import Pipeline
+from sklearn.preprocessing import Pipeline, LabelEncoder
 
 from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
@@ -51,8 +51,11 @@ class DataTransformation:
             target_feature_train_df = train_df[TARGET_COLUMN]
             target_feature_test_df = test_df[TARGET_COLUMN]
 
-            
+            label_encoder = LabelEncoder()
+            label_encoder.fit(target_feature_train_df)
 
+            label_encoder.transform(target_feature_train_df)
+            label_encoder.transform(target_feature_test_df)
         except Exception as e:
             raise SensorException(e, sys)
 

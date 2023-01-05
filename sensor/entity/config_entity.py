@@ -9,6 +9,7 @@ TRAIN_FILE_NAME= 'train.csv'
 TEST_FILE_NAME = 'test.csv'
 TRANSFORMER_OBJECT_FILE_NAME = 'transfomer.pkl'
 TARGET_ENCODER_OBJECT_FILE_NAME = 'target_encoder.pkl'
+MODEL_FILE_NAME = "model.pkl"
 
 
 
@@ -55,7 +56,7 @@ class DataTransformationConfig:
         self.transform_object_path = os.path.join(self.data_transformation_dir, "transformer", TRANSFORMER_OBJECT_FILE_NAME)   
         self.transformed_trained_path = os.path.join(self.data_transformation_dir, "transformed", TRAIN_FILE_NAME.replace("csv", "npz"))
         self.transformed_test_path = os.path.join(self.data_transformation_dir, "transformed", TEST_FILE_NAME.replace("csv", "npz"))
-        self.target_encoder_path = os.path.join(self.data_transformation_dir, "target_encoder", TARGET_ENCODER_OBJECT_FILE_NAME)
+        self.target_encoder_path = os.path.join(self.data_transformation_dir, "target_encoder", TARGET_ENCODER_OBJECT_FILE_NAME) #here we are doing label encoding for the target column , i.e for pos = 1 and neg =0 
 
 
 class ModelTrainerConfig:...
