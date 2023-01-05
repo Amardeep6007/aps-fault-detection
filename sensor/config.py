@@ -15,3 +15,4 @@ mongo_client = pymongo.MongoClient("mongodb://localhost:27017/neurolabDB")
 env_var = EnvironmentVariables()
 pymongo.MongoClient(env_var.mongo_db_url)
 TARGET_COLUMN = "class"
+
