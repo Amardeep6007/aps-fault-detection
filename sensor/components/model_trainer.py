@@ -14,7 +14,8 @@ class ModelTrainer():
     def __init__(self, model_trainer_config:config_entity.ModelTrainerConfig,
                         data_transformation_artifact:artifact_entity.DataTransformationArtifact):
         try:
-            pass
+            self.model_trainer_config = model_trainer_config
+            self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
             raise SensorException(e, sys)
     
@@ -26,9 +27,9 @@ class ModelTrainer():
         except Exception as e:
             raise SensorException(e, sys)
 
-    def train_model(self, x, y):
+    def train_model(self,x,y):
         try:
-            xgb_clf = XGBClassifier()
+            xgb_clf =  XGBClassifier()
             xgb_clf.fit(x,y)
             return xgb_clf
         except Exception as e:
@@ -45,7 +46,7 @@ class ModelTrainer():
             x_test, y_test = test_arr[:,:-1], test_arr[:,:-1]
 
             logging.info(f"Trained the model")
-            model = train_model(x=x_train, y=y_train)
+            model = self.train_model(x=x_train, y=y_train)
 
             logging.info(f"Calculating the f1 train score")
             yhat_train = model.predict(x_train)

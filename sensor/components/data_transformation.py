@@ -2,7 +2,9 @@ from sensor import utils
 from sensor.entity import artifact_entity, config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
-from sklearn.preprocessing import Pipeline, LabelEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import LabelEncoder
+from sensor.config import TARGET_COLUMN
 
 from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
@@ -87,7 +89,7 @@ class DataTransformation:
 
 
             utils.save_object(file_path=self.data_transformation_config.transform_object_path,
-             obj=transformation_pipleine)
+             obj=transformation_pipeline)
 
             utils.save_object(file_path=self.data_transformation_config.target_encoder_path,
             obj=label_encoder)

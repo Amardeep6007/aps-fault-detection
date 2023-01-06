@@ -21,7 +21,8 @@ class DataIngestion:
         try:
             logging.info(f"Exporting collection data as pandas Dataframe")
             #Exporting collection data as pandas data frame
-            df:pd.Dataframe = utils.get_collection_as_dataframe(database_name=self.data_ingestion_config.database_name , collection_name=self.data_ingestion_config.collection_name)
+            df:pd.Dataframe = utils.get_collection_as_dataframe(database_name=self.data_ingestion_config.database_name , 
+                                                                collection_name=self.data_ingestion_config.collection_name)
             
             logging.info("save data in the feature store")
 
@@ -37,10 +38,10 @@ class DataIngestion:
             #save df to feature store folder
             df.to_csv(path_or_buf= self.data_ingestion_config.feature_store_file_path, index=False, header= True)
 
-            logging.info("Split the data set in to train and test")
-            #split the data set into train and test set
-            train_df, test_df = train_test_split(df,test_size=self.data_ingestion_config.test_size, random_state=42)
-
+            logging.info("split dataset into train and test set")
+            #split dataset into train and test set
+            train_df,test_df = train_test_split(df,test_size=self.data_ingestion_config.test_size,random_state=42)
+            
             logging.info("Create data set directory folder if not available ") 
             #create data set directory folder
             dataset_dir = os.path.dirname(self.data_ingestion_config.train_file_path) 
