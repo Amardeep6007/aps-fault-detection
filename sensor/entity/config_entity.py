@@ -59,6 +59,13 @@ class DataTransformationConfig:
         self.target_encoder_path = os.path.join(self.data_transformation_dir, "target_encoder", TARGET_ENCODER_OBJECT_FILE_NAME) #here we are doing label encoding for the target column , i.e for pos = 1 and neg =0 
 
 
-class ModelTrainerConfig:...
+class ModelTrainerConfig:
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
+        self.model_trainer_dir = os.path.join(training_PipelineConfig.artifact_dir, "model_trainer")
+        self.model_path = os.path.join(self.model_trainer_dir, "model", MODEL_FILE_NAME)
+        self.expected_score = 0.7
+        self.overfitting_threshold = 0.1
+        
+
 class ModelEvaluationConfig:...
 class ModelPusherConfig:...
