@@ -38,6 +38,9 @@ from sensor.entity import config_entity
 from sensor.components import data_ingestion
 from sensor.components.data_ingestion import DataIngestion
 from sensor.components.data_validation import DataValidation
+from sensor.components.data_transformation import DataTransformation
+from sensor.components.model_trainer import ModelTrainer
+
 
 if __name__=='__main__':
      try:
@@ -54,6 +57,11 @@ if __name__=='__main__':
                          data_ingestion_artifact=data_ingestion_artifact)
           data_validation_artifact = data_validation.initiate_data_validation()
      
+
+          data_transformation_config = config_entity.DataTransformationConfig(training_PipelineConfig=training_PipelineConfig)
+          data_transformation = DataTransformation(data_transformation_config=data_transformation_config, 
+                                                  data_ingestion_artifact=data_ingestion_artifact)
+          data_transformation_artifact = data_transformation.initiate_data_transformation()     
 
      except Exception as e:
           print(e)
