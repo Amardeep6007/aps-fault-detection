@@ -63,9 +63,9 @@ class ModelTrainerConfig:
     def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         self.model_trainer_dir = os.path.join(training_PipelineConfig.artifact_dir, "model_trainer")
         self.model_path = os.path.join(self.model_trainer_dir, "model", MODEL_FILE_NAME)
-        self.expected_score = 0.7
-        self.overfitting_threshold = 0.1
-        
+        self.expected_score = 0.70
+        self.overfitting_threshold = 0.10
+
 
 class ModelEvaluationConfig:...
 class ModelPusherConfig:...
