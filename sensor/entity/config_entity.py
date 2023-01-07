@@ -67,5 +67,8 @@ class ModelTrainerConfig:
         self.overfitting_threshold = 0.10
 
 
-class ModelEvaluationConfig:...
+class ModelEvaluationConfig:
+    def __init__(self, training_PipelineConfig :Training_PipelineConfig):
+        self.change_threshold = 0.01 #if my trained model is going to perform better by 1 percent (0.1) then we can accept the newly trained model
+        
 class ModelPusherConfig:...
