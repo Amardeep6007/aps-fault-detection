@@ -41,9 +41,9 @@ class ModelTrainer():
             train_arr = utils.load_numpy_array_data(file_path=self.data_transformation_artifact.transformed_train_path)
             test_arr = utils.load_numpy_array_data(file_path=self.data_transformation_artifact.transformed_test_path)
 
-            logging.info(f"splitting input and target feature from both train and test array")
-            x_train, y_train = train_arr[:,:-1], train_arr[:,:-1]
-            x_test, y_test = test_arr[:,:-1], test_arr[:,:-1]
+            logging.info(f"Splitting input and target feature from both train and test arr.")
+            x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
+            x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
 
             logging.info(f"Trained the model")
             model = self.train_model(x=x_train, y=y_train)
