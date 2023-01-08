@@ -74,6 +74,8 @@ class ModelEvaluationConfig:
 class ModelPusherConfig:
     def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         self.model_pusher_dir = os.path.join(training_PipelineConfig.artifact_dir, "model_pusher")
-        self.push_model_dir = os.path.join("saved_models") #here we are creating the saved_models folder outside of the artifact dir
-        self.pusher_model_dir = os.path.join(self.push_model_dir, "saved_models") #we also want to store the saved_models folder in the model_pusher folder under the artifact directory in each run of the program/code
-        
+        self.saved_model_dir = os.path.join("saved_models") #here we are creating the saved_models folder outside of the artifact dir
+        self.pusher_model_dir = os.path.join(self.model_pusher_dir, "saved_models") #we also want to store the saved_models folder in the model_pusher folder under the artifact directory in each run of the program/code
+        self.pusher_model_path = os.path.join(self.pusher_model_dir, MODEL_FILE_NAME) 
+        self.pusher_transformer_path = os.path.join(self.pusher_model_dir, TRANSFORMER_OBJECT_FILE_NAME)
+        self.pusher_target_encoder_path = os.path.join(self.pusher_model_dir, TARGET_ENCODER_OBJECT_FILE_NAME)
