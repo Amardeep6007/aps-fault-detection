@@ -40,9 +40,9 @@ class ModelEvaluation:
 
             #finding the location of transformer, model, and target encoder path
             logging.info(f"finding the location of transformer, model, and target encoder path")
-            model_path = self.model_resolver.get_latest_save_model_path()
+            model_path = self.model_resolver.get_latest_model_path()
             transformer_path = self.model_resolver.get_latest_transformer_path()
-            target_encoder_path = self.model_resolver.get_latest_transformer_path()
+            target_encoder_path = self.model_resolver.get_latest_target_encoder_path()
 
             #loading the previouly trained transformer, target_encoder, model object
             logging.info(f"loading the previouly trained transformer, target_encoder, model object")

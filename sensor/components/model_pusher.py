@@ -13,21 +13,22 @@ class ModelPusher:
                         data_transformation_artifact:DataTransformationArtifact,
                         model_trainer_artifact:ModelTrainerArtifact):
         try:
-            self.model_pusher_config = model_pusher_config
-            self.data_transformation_artifact = data_transformation_artifact
-            self.model_trainer_artifact = model_trainer_artifact
-            self.model_resolver = ModelResolver(model_registry=self.model_pusher_config.saved_model_dir) #here we are updating the path 
-
+            logging.info(f"{'>>'*20} Model Pusher {'<<'*20}")
+            self.model_pusher_config=model_pusher_config
+            self.data_transformation_artifact=data_transformation_artifact
+            self.model_trainer_artifact=model_trainer_artifact
+            self.model_resolver = ModelResolver(model_registry=self.model_pusher_config.saved_model_dir)
+        
         except Exception as e:
             raise SensorException(e, sys)
     
     def initiate_model_pusher(self,)->ModelPusherArtifact:
         try:
             #load all the objects
-            logging.info(f"Loading the tranformer, model and target_encoder objects")
-            transformer = load_object(file_path=self.data_transformation_artifact.transform_object_path) #loading the transformer.pkl file 
-            model = load_object(file_path=self.model_trainer_artifact.model_path) #loading the model.pkl file 
-            target_encoder = load_object(file_path = self.data_transformation_artifact.target_encoder_path) #loading the target_encoder.pkl file 
+            logging.info(f"Loading transformer ,model and target encoder")
+            transformer = load_object(file_path=self.data_transformation_artifact.transform_object_path) #loading the transformer.pkl file
+            model = load_object(file_path=self.model_trainer_artifact.model_path) #loading the model.pkl file
+            target_encoder = load_object(file_path=self.data_transformation_artifact.target_encoder_path) #loading the target_encoder.pkl file
 
             #save in model pusher dir inside of the artifact folder
             logging.info(f"saving the model to model pusher dir")

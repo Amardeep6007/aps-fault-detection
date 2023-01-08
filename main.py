@@ -83,7 +83,7 @@ if __name__=='__main__':
           model_eval_artifact = model_eval.initiate_model_evaluation()     
 
           #model Pusher
-          model_pusher_config = config_entity.ModelPusherConfig(training_PipelineConfig)
+          model_pusher_config = config_entity.ModelPusherConfig(training_PipelineConfig=training_PipelineConfig)
           model_pusher = ModelPusher(model_pusher_config=model_pusher_config, 
                     data_transformation_artifact = data_transformation_artifact,
                     model_trainer_artifact=model_trainer_artifact)

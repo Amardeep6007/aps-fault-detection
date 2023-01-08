@@ -30,8 +30,8 @@ class ModelResolver:
             if len(dir_names)==0:
                 return None
             dir_names = list(map(int, dir_names)) #convert the names from string to integer
-            latest_folder_name = max(dir_names) #highest integer is the latest folder as newest model will get the highest number folder 
-            return os.path.join(self.model_registry, f'{latest_folder_name}')
+            latest_dir_name = max(dir_names) #highest integer is the latest folder as newest model will get the highest number folder 
+            return os.path.join(self.model_registry, f'{latest_dir_name}')
         except Exception as e:
             raise e
 
