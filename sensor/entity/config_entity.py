@@ -71,4 +71,9 @@ class ModelEvaluationConfig:
     def __init__(self, training_PipelineConfig :Training_PipelineConfig):
         self.change_threshold = 0.01 #if my trained model is going to perform better by 1 percent (0.1) then we can accept the newly trained model
         
-class ModelPusherConfig:...
+class ModelPusherConfig:
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
+        self.model_pusher_dir = os.path.join(training_PipelineConfig.artifact_dir, "model_pusher")
+        self.push_model_dir = os.path.join("saved_models") #here we are creating the saved_models folder outside of the artifact dir
+        self.pusher_model_dir = os.path.join(self.push_model_dir, "saved_models") #we also want to store the saved_models folder in the model_pusher folder under the artifact directory in each run of the program/code
+        
