@@ -17,6 +17,12 @@ class DataTransformationArtifact:
     transformed_test_path:str
     target_encoder_path:str
 
+@dataclass
+class ClassifiactionMetricArtifact:
+    f1_score:float
+    precision_score:float
+    recall_score:float 
+
 @dataclass    
 class ModelTrainerArtifact:
     model_path:str 

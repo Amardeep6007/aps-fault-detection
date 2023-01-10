@@ -1,10 +1,11 @@
 from sensor.predictor import ModelResolver
 from sensor.logger import logging
 from sensor.exception import SensorException
-from sensor.entity.config_entity import ModelPusherConfig
-from sensor.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ModelPusherArtifact
+from sensor.entity.config_entity import ModelPusherConfig, ModelEvaluationConfig
+from sensor.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ModelPusherArtifact, ModelEvaluationArtifact
 from sensor.utils import load_object, save_object
 import os,sys
+
 
 
 

@@ -41,7 +41,7 @@ class DataIngestionConfig:
 
 class DataValidationConfig:
 
-    def __init__(self, training_PipelineConfig=Training_PipelineConfig()):
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         self.data_validation_dir = os.path.join(training_PipelineConfig.artifact_dir, "data_validation")
         self.report_file_path = os.path.join(self.data_validation_dir, "report.yaml")
         self.missing_threshold:float = 0.20
@@ -51,7 +51,7 @@ class DataValidationConfig:
 
 class DataTransformationConfig:
 
-    def __init__(self, training_PipelineConfig = Training_PipelineConfig()):
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         self.data_transformation_dir = os.path.join(training_PipelineConfig.artifact_dir, "data_transformation")
         self.transform_object_path = os.path.join(self.data_transformation_dir, "transformer", TRANSFORMER_OBJECT_FILE_NAME)   
         self.transformed_train_path = os.path.join(self.data_transformation_dir, "transformed", TRAIN_FILE_NAME.replace("csv", "npz"))
@@ -68,7 +68,7 @@ class ModelTrainerConfig:
 
 
 class ModelEvaluationConfig:
-    def __init__(self, training_PipelineConfig :Training_PipelineConfig):
+    def __init__(self, training_PipelineConfig:Training_PipelineConfig):
         self.change_threshold = 0.01 #if my trained model is going to perform better by 1 percent (0.1) then we can accept the newly trained model
         
 class ModelPusherConfig:
@@ -79,3 +79,4 @@ class ModelPusherConfig:
         self.pusher_model_path = os.path.join(self.pusher_model_dir, MODEL_FILE_NAME) 
         self.pusher_transformer_path = os.path.join(self.pusher_model_dir, TRANSFORMER_OBJECT_FILE_NAME)
         self.pusher_target_encoder_path = os.path.join(self.pusher_model_dir, TARGET_ENCODER_OBJECT_FILE_NAME)
+
