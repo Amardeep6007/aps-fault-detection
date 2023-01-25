@@ -17,11 +17,11 @@ class DataTransformationArtifact:
     transformed_test_path:str
     target_encoder_path:str
 
-@dataclass
+""" @dataclass
 class ClassifiactionMetricArtifact:
     f1_score:float
     precision_score:float
-    recall_score:float 
+    recall_score:float  """
 
 @dataclass    
 class ModelTrainerArtifact:
@@ -33,7 +33,11 @@ class ModelTrainerArtifact:
 class ModelEvaluationArtifact:
     is_model_accepted:bool 
     improved_accuracy:float 
-    
+    #best_model_path:str 
+    #trained_model_path:str 
+    #trained_model_metric_artifact: ClassifiactionMetricArtifact 
+    #best_model_metric_artifact: ClassifiactionMetricArtifact
+        
 @dataclass    
 class ModelPusherArtifact:
     pusher_model_dir:str 

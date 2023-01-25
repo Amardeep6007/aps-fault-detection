@@ -5,11 +5,11 @@ from sensor.entity.config_entity import ModelPusherConfig, ModelEvaluationConfig
 from sensor.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact, ModelPusherArtifact, ModelEvaluationArtifact
 from sensor.utils import load_object, save_object
 import os,sys
-from sensor.ml.metric.classification_metric import get_classification_score
+#from sensor.ml.metric.classification_metric import get_classification_score
 import shutil
 
 
-""" class ModelPusher:
+class ModelPusher:
     def __init__(self, model_pusher_config:ModelPusherConfig,
                         data_transformation_artifact:DataTransformationArtifact,
                         model_trainer_artifact:ModelTrainerArtifact):
@@ -53,16 +53,23 @@ import shutil
             return model_pusher_artifact
         except Exception as e:
             raise SensorException(e, sys)
- """
 
-class ModelPusher:
+
+""" class ModelPusher:
 
     def __init__(self,
                 model_pusher_config: ModelPusherConfig,
-                model_eval_config :ModelEvaluationArtifact):
+                model_eval_artifact :ModelEvaluationArtifact):
 
         try:
             self.model_pusher_config = model_pusher_config
-            self.model_eval_config = model_eval_config
+            self.model_eval_artifact = model_eval_artifact
         except Exception as e:
             raise SensorException(e, sys)
+
+    def initiate_model_pusher(self,)->ModelPusherArtifact:
+        try:
+            trained_model_path = self.model_eval_artifact.trained_model_path
+            self.model_pusher_config.model_
+        except Exception as e:
+            raise SensorException(e, sys) """
