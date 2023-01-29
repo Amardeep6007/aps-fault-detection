@@ -43,7 +43,7 @@ class ModelResolver:
             return os.path.join(latest_dir, self.model_dir_name, MODEL_FILE_NAME)
         except Exception as e:
             raise e
-    def get_latest_transformer_path(): #from the latest folder name fetch the latest transformer path
+    def get_latest_transformer_path(self): #from the latest folder name fetch the latest transformer path
         try:
             latest_dir = self.get_latest_dir_path()
             if latest_dir is None:
@@ -51,7 +51,7 @@ class ModelResolver:
             return os.path.join(latest_dir,self.transformer_dir_name, TRANSFORMER_OBJECT_FILE_NAME)
         except Exception as e:
             raise e
-    def get_latest_target_encoder_path(): #from the latest folder name fetch the latest target encoder path
+    def get_latest_target_encoder_path(self): #from the latest folder name fetch the latest target encoder path
         try:
             latest_dir = self.get_latest_dir_path()
             if latest_dir is None:

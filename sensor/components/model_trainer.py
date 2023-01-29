@@ -61,7 +61,8 @@ class ModelTrainer():
             #check for overfitting and underfitting or expected score
             logging.info(f"Checking if our model is underfitted model or not")
             if f1_test_score < self.model_trainer_config.expected_score:
-                raise Exception(f"Model is not a good model as it is not giving the expected accuracy {self.model_trainer_config.expected_score}:model actual score is: {f1_test_score}")
+                raise Exception(f"Model is not a good model as it is not giving the \
+                 expected accuracy {self.model_trainer_config.expected_score}:model actual score is: {f1_test_score}")
             
             logging.info(f"Checking if our model is overfitted model or not")
             diff = abs(f1_train_score-f1_test_score)
@@ -75,7 +76,7 @@ class ModelTrainer():
 
             #prepare artifact
             logging.info(f"preparing the artifact")
-            model_trainer_artifact = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config, 
+            model_trainer_artifact = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
                                                 f1_train_score=f1_train_score, 
                                                 f1_test_score=f1_test_score)
             logging.info(f"Model trainer artifact :{model_trainer_artifact}")
