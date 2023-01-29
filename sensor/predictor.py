@@ -16,7 +16,7 @@ class ModelResolver:
                         model_dir_name= 'model'):
         self.model_registry = model_registry
         os.makedirs(self.model_registry,exist_ok=True)
-        self.transformer_model_dir = transformer_dir_name
+        self.transformer_dir_name = transformer_dir_name
         self.target_encoder_dir_name = target_encoder_dir_name
         self.model_dir_name = model_dir_name
 
@@ -35,7 +35,7 @@ class ModelResolver:
         except Exception as e:
             raise e
 
-    def get_latest_model_path(): # from the latest folder name fetch the latest model path
+    def get_latest_model_path(self): # from the latest folder name fetch the latest model path
         try:
             latest_dir = self.get_latest_dir_path()
             if latest_dir is None:
@@ -72,21 +72,21 @@ class ModelResolver:
         except Exception as e:
             raise e
 
-    def get_latest_save_model_path(): # from the latest folder name fetch the latest model path
+    def get_latest_save_model_path(self): # from the latest folder name fetch the latest model path
         try:
             latest_dir = self.get_latest_save_dir_path()
             return os.path.join(latest_dir, self.model_dir_name, MODEL_FILE_NAME)
         except Exception as e:
             raise e
 
-    def get_latest_save_transformer_path(): #from the latest folder name fetch the latest transformer path
+    def get_latest_save_transformer_path(self): #from the latest folder name fetch the latest transformer path
         try:
             latest_dir = self.get_latest_save_dir_path()
             return os.path.join(latest_dir,self.transformer_dir_name, TRANSFORMER_OBJECT_FILE_NAME)
         except Exception as e:
             raise e
 
-    def get_latest_save_target_encoder_path():
+    def get_latest_save_target_encoder_path(self):
         try:
             latest_dir = self.get_latest_save_dir_path()
             return os.path.join(latest_dir, self.target_encoder_dir_name, TARGET_ENCODER_OBJECT_FILE_NAME)
