@@ -10,7 +10,7 @@ class EnvironmentVariables():
     mongo_db_url:str = os.getenv("MONGO_DB_URL")
 
 #mongoDB localhost url to connect python to mongodb 
-mongo_client = pymongo.MongoClient("mongodb://localhost:27017/neurolabDB")
+mongo_client = pymongo.MongoClient("mongodb+srv://amar:Amar6007@cluster0.s0catd9.mongodb.net/?retryWrites=true&w=majority")
 
 env_var = EnvironmentVariables()
 pymongo.MongoClient(env_var.mongo_db_url)
