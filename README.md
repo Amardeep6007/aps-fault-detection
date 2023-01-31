@@ -64,5 +64,3 @@ Step 5: To pull the changes from the git hub repo
 ```
 git pull origin "branch_name"
 ```
-
-
